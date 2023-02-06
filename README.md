@@ -1,5 +1,5 @@
 # aks-healthprobes
-Sample code how to statically configure TCP health probes in a ingress-internal LB
+Sample code how to statically configure TCP health probes in a ingress-internal LB. Requires k8s >1.24
 
 First, we are deploying nginx-ingress:
 ```
@@ -24,7 +24,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/application-gateway-kub
 Your Health Probes will look like this:
 ![](2023-02-06-19-05-04.png)
 
-If we want to use TCP for our health probes, add service.beta.kubernetes.io/azure-load-balancer-health-probe-protocol: "tcp":
+If we want to use TCP for our health probes, add service.beta.kubernetes.io/port_<portname>_health-probe_protocol: "tcp":
 ```
 helm install ingress-nginx ingress-nginx/ingress-nginx \
     --version 4.1.3 \
